@@ -1,6 +1,15 @@
 const inquirer = require('inquirer');
 const fs = require('fs/promises');
 const path = require("path");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
+const outputDir = path.resolve(__dirname, "output");
+const outputPath = path.join(outputDir, "team.html");
+
+const render = require("./lib/htmlRenderer");
+let arrayOfCards = []
 
 const promptManager = () => {
     return inquirer.prompt([
@@ -24,8 +33,13 @@ const promptManager = () => {
             name: "officeNumber",
             message: "Enter the office number of the team manager."
         }
-    ])
+    ]).then(function (response) {
+        let manager = new Manager(response.employeeName, response.id, response.email, response.officeNumber);
+        arrayOfCards.push(manager);
+        console.log(arrayOfCards)
+    })
 }
+
 
 const promptEngineer = () => {
     return inquirer.prompt([
@@ -49,9 +63,13 @@ const promptEngineer = () => {
             name: "github",
             message: "Enter the Github username of the team engineer."
         }
-    ])
+    ]).then(function (response) {
+        let engineer = new Engineer(response.employeeName, response.id, response.email, response.github);
+        arrayOfCards.push(engineer);
+        console.log(arrayOfCards)
+        return true;
+    })
 }
-
 
 const promptIntern = () => {
     return inquirer.prompt([
@@ -75,9 +93,13 @@ const promptIntern = () => {
             name: "school",
             message: "Enter the school of the intern."
         }
-    ])
+    ]).then(function (response) {
+        let intern = new Intern(response.employeeName, response.id, response.email, response.school);
+        arrayOfCards.push(intern);
+        console.log({ arrayOfCards })
+        return true;
+    })
 }
-
 
 const runPromptLoop = () => {
     return inquirer.prompt({
@@ -118,4 +140,3 @@ promptManager().then(() => {
 }).then(() => {
     console.log("Your response has been logged")
 })
-
