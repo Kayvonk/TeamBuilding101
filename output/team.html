@@ -1,27 +1,4 @@
-const path = require("path");
-const fs = require("fs");
-
-const srcDir = path.resolve(__dirname, "../src");
-
-const renderEngineer = (engineer) => `
-<div class="employee-card">
-    <div class="cardHeader">
-        <h3 class="subHeader pt-2 pl-3 pr-3">${engineer.writeName()} </h3>
-        <h4 class="subHeader pb-3 pl-3 pr-3"> <i class="fas fa-wrench"></i> ${engineer.writeRole()}</h4>
-    </div>
-    <div class="contents">
-        <div class="pl-3 pr-3"> ID: ${engineer.writeId()}</div>
-        <div class="pl-3 pr-3"> Email: <a href="mailto:${engineer.writeEmail()}">${engineer.writeEmail()}</a> </div>
-        <div class="pb-3 pl-3 pr-3">Github: <a href="https://github.com/${engineer.writeGithub()}" target="_blank">${engineer.writeGithub()}</a>
-        </div>
-    </div>
-</div>
-`
-
-module.exports = (employees) => {
-    console.log({ employees })
-    const engineerHTML = employees.filter(employee => employee.writeRole() === "Engineer").map(renderEngineer).join("\n")
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -45,11 +22,23 @@ module.exports = (employees) => {
         </div>
         <div id="cards" class="row d-flex justify-content-center">
        
-            ${engineerHTML}
+            
+<div class="employee-card">
+    <div class="cardHeader">
+        <h3 class="subHeader pt-2 pl-3 pr-3">1 </h3>
+        <h4 class="subHeader pb-3 pl-3 pr-3"> <i class="fas fa-wrench"></i> Engineer</h4>
+    </div>
+    <div class="contents">
+        <div class="pl-3 pr-3"> ID: 2</div>
+        <div class="pl-3 pr-3"> Email: <a href="mailto:3">3</a> </div>
+        <div class="pb-3 pl-3 pr-3">Github: <a href="https://github.com/4" target="_blank">4</a>
+        </div>
+    </div>
+</div>
+
 
         </div>
     </div>
 </body>
 
-</html>`
-};
+</html>
