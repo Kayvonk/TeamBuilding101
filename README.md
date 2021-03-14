@@ -9,7 +9,7 @@
 * [Questions](#questions)
 
 ## Description
-This application presents the user with a series of prompts about their team members and outputs a styled HTML file based on their responses. The prompt will request information about the team manager followed by questions about any additional enginners or interns to be added to the team profile.
+This application presents the user with a series of prompts about their team members and outputs a styled HTML file based on their responses. The prompt will request information about the team manager followed by questions about any additional engineers or interns to be added to the team profile.
 
 ## Installation
 To install this application, clone this repository into a folder of your choice.
